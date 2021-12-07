@@ -1,0 +1,95 @@
+﻿@model MVC_Web_App.Models.AppUsers
+
+@{
+    ViewData["Title"] = "التسجيل";
+}
+<div class="container">
+    <div class="page-title">
+        <h3 class="text-danger font-weight-bolder">التسجيل</h3>
+    </div>
+
+    <h3 class="text-info">اضافة حساب جديد</h3>
+
+    <div class="row">
+        @{ if (MVC_Web_App.Controllers.AccountController.RegisterOpen == false)
+            {
+                <div class="regAlert"><b class="alert alert-danger">عذرا التسجيل مغلق بالموقع حاليا, يرجي المحاولة لاحقا </b></div>
+            }
+            else
+            {
+
+                <div class="col-md-4">
+                    <form asp-action="Register">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        @*<div class="form-group">
+                                <label asp-for="Id" class="control-label"></label>
+                                <input asp-for="Id" class="form-control" />
+                                <span asp-validation-for="Id" class="text-danger"></span>
+                            </div>*@
+                        <div class="text-danger">
+                            @{
+                                string msg = string.Empty;
+                                if (MVC_Web_App.Controllers.AccountController.message != null)
+                                {
+                                    msg = MVC_Web_App.Controllers.AccountController.message;
+                                }
+                            }
+                            @msg
+                        </div>
+                        <div class="text-success">
+                            @{
+                                string success = string.Empty;
+                                if (MVC_Web_App.Controllers.AccountController.successmsg != null)
+                                {
+                                    success = MVC_Web_App.Controllers.AccountController.successmsg;
+                                }
+                            }
+                            @success
+                        </div>
+                        <div class="form-group" dir="rtl">
+                            <label asp-for="UserName" class="control-label"></label>
+                            <input asp-for="UserName" class="form-control" placeholder="UserName" />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password" class="control-label"></label>
+                            <input asp-for="Password" class="form-control" placeholder="Password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PasswordConfirm" class="control-label"></label>
+                            <input asp-for="PasswordConfirm" class="form-control" placeholder="Password Confrim" />
+                            <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" placeholder="Email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        @*<div class="form-group form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="EmilConfirm" /> @Html.DisplayNameFor(model => model.EmilConfirm)
+                                </label>
+                            </div>*@
+                        <div class="form-group">
+                            <label asp-for="Phone" class="control-label"></label>
+                            <input asp-for="Phone" class="form-control" placeholder="Phone" />
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="تسجيل" class="btn btn-primary font-weight-bolder" />
+                        </div>
+                    </form>
+                </div>
+            }
+        }
+
+    </div>
+
+    <div>
+        <a asp-action="Login" asp-controller="Account">لدى حساب سابق</a>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

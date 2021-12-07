@@ -1,0 +1,35 @@
+﻿@model MVC_Web_App.Models.UserRole
+
+@{
+    ViewData["Title"] = "حذف صلاحية";
+}
+<div class="container">
+    <div class="page-title">
+        <h3>Delete</h3>
+    </div>
+    <h5 class="text-danger">هل انت متأكد انك تريد حذف هذه الصلاحية ؟</h5>
+    <div>
+        <h4>الصلاحية</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                الصلاحية
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.appRole.RoleName)
+            </dd>
+            <dt class="col-sm-2">
+                المستخدم
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.appUsers.UserName)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            <a asp-action="Index">العودة لقائمة الصلاحيات</a>
+        </form>
+    </div>
+</div>

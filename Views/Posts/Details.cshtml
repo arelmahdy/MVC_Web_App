@@ -1,0 +1,98 @@
+﻿@model MVC_Web_App.Models.Post
+
+@{
+    ViewData["Title"] = "التفاصيل";
+}
+<div class="container">
+    <div class="page-title">
+        <h3 class="text-danger">تفاصيل</h3>
+    </div>
+
+
+    <div>
+        <dl class="row row-setting">
+            <dt class="col-sm-2 text-success">
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+            <dt class="col-sm-2 text-success">
+                @Html.DisplayNameFor(model => model.PostContent)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PostContent)
+            </dd>
+            <dt class="col-sm-2 text-success">
+                @Html.DisplayNameFor(model => model.PostImage)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PostImage)
+            </dd>
+            <dt class="col-sm-2 text-success">
+                @Html.DisplayNameFor(model => model.Author)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Author)
+            </dd>
+            <dt class="col-sm-2 text-success">
+                @Html.DisplayNameFor(model => model.PostDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PostDate)
+            </dd>
+            <dt class="col-sm-2 text-success">
+                @Html.DisplayNameFor(model => model.PostViews)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PostViews)
+            </dd>
+            <dt class="col-sm-2 text-success">
+                @Html.DisplayNameFor(model => model.PostLike)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PostLike)
+            </dd>
+            <dt class="col-sm-2 text-success">
+                @Html.DisplayNameFor(model => model.LikeUserName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LikeUserName)
+            </dd>
+            <dt class="col-sm-2 text-success">
+                @Html.DisplayNameFor(model => model.SubCategory)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SubCategory.SubCatName)
+            </dd>
+            <dt class="col-sm-2 text-success">
+                @Html.DisplayNameFor(model => model.IsPublish)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.IsPublish)
+            </dd>
+            <dt class="col-sm-2 text-success">
+                @Html.DisplayNameFor(model => model.ProductName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ProductName)
+            </dd>
+            <dt class="col-sm-2 text-success">
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+            <dt class="col-sm-2 text-success">
+                @Html.DisplayNameFor(model => model.Discount)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Discount)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">تعديل</a> |
+        <a asp-action="Index" >العودة الى قائمة المواضيع</a>
+    </div>
+</div>

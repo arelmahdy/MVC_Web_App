@@ -1,0 +1,45 @@
+﻿
+
+@{
+    ViewData["Title"] = "الصلاحيات";
+}
+<div class="container">
+    <div class="page-title">
+        <h3 class="text-dark">الصلاحيات</h3>
+    </div>
+
+    <table class="table table-responsive table-light">
+        <thead>
+            <tr>
+                <th class="text-primary">
+                    الصلاحية
+                </th>
+                <th class="text-primary">
+                    المستخدم
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                System.Data.DataTable dt = new System.Data.DataTable();
+                MVC_Web_App.Data.Users cs = new MVC_Web_App.Data.Users();
+                dt = cs.GetUserRole();
+                if (dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        <tr>
+                            <td>@dt.Rows[i][4].ToString()</td>
+                            <td>@dt.Rows[i][3].ToString()</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@dt.Rows[i][0].ToString()">تعديل</a> |
+                                <a asp-action="Delete" asp-route-id="@dt.Rows[i][0].ToString()">حذف</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>

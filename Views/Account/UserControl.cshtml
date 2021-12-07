@@ -1,0 +1,95 @@
+﻿@model MVC_Web_App.Models.AppUsers
+@{
+    ViewData["Title"] = "الحساب الشخصى";
+}
+<link href="~/css/login.css" rel="stylesheet" />
+<div class="container">
+    <div class="page-title">
+        <h2>الحساب الشخصى</h2>
+    </div>
+    <div class="text-danger">@MVC_Web_App.Controllers.AccountController.message</div>
+    <div class="text-success">@MVC_Web_App.Controllers.AccountController.successmsg</div>
+    <div class="rowueer">
+        <div class="list-group userList">
+
+            <a class="list-group-item text-light active text-center" style="z-index:-1;">
+                <i class="fa fa-user-cog"></i>
+                القائمة
+            </a>
+            <a href="#" class="list-group-item" onclick="document.getElementById('id01').style.display='block'">تغير كلمة المرور</a>
+            @{
+                if (MVC_Web_App.Controllers.AccountController.IsProfileExist)
+                {
+                    long UserId = MVC_Web_App.Controllers.AccountController.UID;
+                    if (UserId > 0)
+                    {
+                        <a asp-action="EditProfile" asp-route-id="@UserId.ToString()" class="list-group-item">الملف الشخصي</a>
+                    }
+                }
+                else
+                {
+                    <a asp-action="Profile" asp-route-id="@User.FindFirst(ClaimTypes.NameIdentifier)?.Value" class="list-group-item">الملف الشخصي</a>
+                }
+            }
+
+            <a href="#" class="list-group-item">رابط رقم 3</a>
+        </div>
+    </div>
+
+    <div class="user-personal">
+        <div class="form-group">
+            <div><label asp-for="UserName" class="control-label"></label></div>
+            <div class="userlbl">
+                <label>@Html.DisplayFor(model => model.UserName)</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div> <label asp-for="Email" class="control-label"></label></div>
+            <div class="userlbl">
+                <label>@Html.DisplayFor(model => model.Email)</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div><label asp-for="Phone" class="control-label"></label></div>
+            <div class="userlbl">
+                <label>@Html.DisplayFor(model => model.Phone)</label>
+            </div>
+        </div>
+    </div>
+    <div id="id01" class="modal">
+        <form asp-action="VerifyPassword" class="modal-content animate">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            </div>
+            <div class="imgcontainer">
+                <img src="@Url.Content("/images/user/pass.jpg")" alt="Avatar" class="img-thumbnail">
+            </div>
+            <div class="container">
+                <label for="uname"><b>تأكيد كلمة المرور</b></label>
+                <input type="password" placeholder="Enter Password" name="pass" required>
+
+                <button type="submit" class="btn-success">تأكيد</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+}

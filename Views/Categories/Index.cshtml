@@ -1,0 +1,38 @@
+﻿@model IEnumerable<MVC_Web_App.Models.Category>
+
+@{
+    ViewData["Title"] = "التصنيفات";
+}
+<div class="container">
+    <div class="page-title">
+        <h3 class="text-success">التصنيفات الاساسية</h3>
+    </div>
+    <p>
+        <a asp-action="Create">انشاء جديد </a>
+    </p>
+    <table class="table table-responsive-lg table-light">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CatName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CatName)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">تعديل</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">التفاصيل</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">حذف</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

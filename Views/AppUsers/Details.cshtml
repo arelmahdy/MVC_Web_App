@@ -1,0 +1,56 @@
+﻿@model MVC_Web_App.Models.AppUsers
+
+@{
+    ViewData["Title"] = "تفاصيل مستخدم";
+}
+<div class="container">
+    <div class="page-title">
+        <h3 class="text-info">التفاصيل</h3>
+    </div>
+    <div>
+        <h4>تفاصيل المستخدم</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PasswordConfirm)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PasswordConfirm)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EmailConfirm)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EmailConfirm)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Phone)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id">تعديل</a> |
+        <a asp-action="Index">الرجوع الى  صفحة البيانات للمستخدمين</a>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+﻿@model MVC_Web_App.Models.Category
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <div class="page-title">
+        <h4>التعديل</h4>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="CatName" class="control-label"></label>
+                    <input asp-for="CatName" class="form-control" />
+                    <span asp-validation-for="CatName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="تعديل" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">العودة الى قائمة التصنيفات</a>
+    </div>
+    </div>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
